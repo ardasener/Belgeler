@@ -1,6 +1,9 @@
 OpenMP Senkronizasyon
 =====================
 
+Bütün paralel hesaplama kütüphanelerinde olduğu gibi, zamanlama ve senkronizasyon direktifleri OpenMP
+programlaması için oldukça önemli ve gereklidir. Temel direktifler aşağıda verilmiştir.
+
 Master
 ------
 
@@ -22,7 +25,8 @@ ise diğer alana giriş mümkün olmaz.
 Barrier
 -------
 
-``#pragma omp barrier`` şeklinde kullanılır. Kodun bu noktasın gelen bir
+En temel senkronizasyon direktiflerinden birisidir. 
+``#pragma omp barrier`` şeklinde kullanılır. Kodun bu noktasına gelen bir
 iş parçacığı diğer tüm iş parçacıkları buraya ulaşmadan devam edemez.
 
 Atomic
@@ -30,7 +34,7 @@ Atomic
 
 ``#pragma omp atomic <işlem-tipi>`` şeklinde kullanılır. ``Critical``
 ile benzer olmakla beraber, bir blok değil sadece tek bir satırdan önce
-olacak şekilde kullanılabilir. Bu satır da aşağıda belirtilen işlem
+olacak şekilde kullanılabilir. Bu satır aşağıda belirtilen işlem
 formlarından birine uymalıdır.
 
 İşlem Tipi:

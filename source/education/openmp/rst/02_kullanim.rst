@@ -2,39 +2,38 @@ OpenMP Kullanımı
 ================
 
 -  OpenMP hem C/C++ hem Fortran derleyicileri ile kullanılabilir. Bu
-   dökümentasyonda C++ ile kullanımını gözden geçireceğiz.
--  Bu bölümün amacı hali hazırda var olan kodumuzu OMP direktifleri
-   aracılığı ile en az eforu göstererek hızlandırmak.
+   dokümanda C++ ile kullanımını gözden geçireceğiz.
+-  Bu bölümün amacı hâlihazırda var olan kodumuzu OMP direktifleri
+   aracılığı ile en az eforu göstererek hızlandırmaktır.
 
 C++ “pragma”
 ------------
 
 -  C++’da ``pragma`` direktifi derleyiciye kodun kendisinin dışında
-   ekstra bilgi vermek için kullanılan bir standartdır.
--  ``#pragma ...`` şeklinde kullanılır.
+   ekstra bilgi vermek için kullanılan bir standarttır.
 -  Biz bu direktifi derleyiciye OpenMP özelliklerini kullanmasını
    belirtmek için ``#pragma omp ...`` şeklinde kullanacağız.
 
 C++ OpenMP kodu derlemek
 ------------------------
 
--  OpenMP standartı gcc,clang,msvc gibi popüler bir çok C/C++
+-  OpenMP standartı *gcc*, *clang*, *msvc* gibi popüler bir çok C/C++
    derleyicisi tarafından desteklenir.
 
    -  Derleyiceler arasında OpenMP açısından bazı farklar olması
       doğaldır.
 
--  Bu dokümentasyon Truba’da yüklü olan ``gcc`` (C++ için ``g++`` olarak
-   çağırılır.) derleyecisini kullanacaktır.
+-  Bu doküman TRUBA'xa yüklü olan ``gcc`` (C++ için ``g++`` olarak
+   çağırılır) derleyicisini kullanmaktadır.
 
--  Trubaya giriş yaptığımızda yüklü ``gcc`` versiyonunun 4.8 olduğunu
-   görüyoruz. (Haziran,2021 itibariyle)
+-  TRUBA'ya giriş yaptığımızda yüklü ``gcc`` versiyonunun 4.8 olduğunu
+   görüyoruz. (Haziran 2021 itibariyle).
 
--  Bu bazı örnekler için yeterli olmakla birlikte yeni C++ ve OpenMP
-   özelliklerini desteklememekte. Dolayısıyla yeni bir versiyonun modül
+-  Bu versiyon bazı örnekler için yeterli olmakla birlikte yeni C++ ve OpenMP
+   özelliklerini desteklememektedir. Dolayısıyla yeni bir versiyonun modül
    sistemiyle yüklenmesi önerilir.
 
--  ``module avail gcc`` komutu kullanılarak çevre modülü (İngilizce:
+-  ``module avail gcc`` komutu kullanılarak çevre modülü (ing.,
    environment module) sistemi kullanılarak yüklenebilecek ``gcc``
    versiyonları görüntülenebilir.
 
@@ -42,9 +41,9 @@ C++ OpenMP kodu derlemek
    yüklenebilir.
 
 -  Örneğin: ``module load centos7.3/comp/gcc/9.2`` kullanılarak
-   ``gcc 9.2`` yüklenilebilir.
+   ``gcc 9.2`` yüklenebilir.
 
--  C++ kodunu OpenMP özellikleri ile birlikte compile etmek için komuta
+-  C++ kodunu OpenMP özellikleri ile birlikte derlemek için derleme komutuna
    ``-fopenmp`` eklemek yeterlidir.
 
 -  Örnek (C++14, OpenMP ve 3.seviye optimizasyon):

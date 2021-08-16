@@ -28,13 +28,16 @@ programlama gerçekleştirilebilir.
 OMP For
 -------
 
+Paralel bloğun içerisinde birden fazla iş parçacığı bulunduğundan
+eğer başka bir direktif verilmezse bu iş parçacıkları aynı kodu çalıştıracaktır. 
+Kodun bazı kısımları için işin bu parçacıklara dağıtılması gerekir. 
 ``#pragma omp for`` direktifi kullanılarak standard C/C++ for döngüleri
 paralel hale getirilebilir. Bu durumda döngünün içindeki kod birden
-fazla iş parçacığı tarafından bazıları paralel olacak şekilde
+fazla iş parçacığı tarafından paralel olacak şekilde
 çalıştırılacaktır.
 
 Aşağıdaki örnekte bu direktif kullanılarak iki rastgele sayılardan
-oluşan dizi (İngilizce: array) paralel olarak çarpılmıştır.
+oluşan dizi (ing., array) paralel olarak çarpılmıştır.
 
 .. code:: cpp
 
@@ -101,20 +104,20 @@ Aşağıda aynı örnek bu kısayol kullanılarak verilmiştir.
        }
    }
 
-Bazı önemli detaylar: - Yinelemeler (İngilizce: iteration) arasında
-herhangi bir sıralama olması beklenemez. Bir diğer değişle döngü
+Bazı önemli detaylar: - Paralel bir çalışmada, seri çalışmada olduğu gibi yinelemelerin 
+(ing., iteration) verilen sırayı takip etmesi beklenemez. Bir diğer değişle döngü
 beklenenden farklı bir sırada çalıştırılabilir. - An itibariyle OpenMP
-şartnamesine göre sadece “canonical loop form” yani ``for(...;...;...)``
-şeklindeki looplar desteklenmekte. Yani C++11 ile birlikle gelen
-``for(... : ...)`` şeklindeki looplar bu direktif ile kullanılamaz. -
+standardına göre sadece “canonical loop form” yani ``for(...;...;...)``
+şeklindeki döngüler desteklenmektedir. C++11 ile birlikle gelen
+``for(... : ...)`` şeklindeki döngüler bu direktif ile kullanılamaz. -
 OpenMP 5 ile birlikte ``loop`` adında benzer bir direktif eklenmiştir.
-An itibariyle Truba’da yüklü olan derleyeciler OpenMP 5’i desteklemediği
-için bu direktif dökümantasyona dahil edilmemiştir. - Yukarıda verilen
-örneklerde iş parçacıkları veriyi (bu durumda a,b,c dizilerini)
-paylaşmaktadır. Yani bütün threadler aynı dizilere erişmekte ve
+An itibariyle TRUBA'da yüklü olan derleyeciler OpenMP 5’i desteklemediği
+için bu direktif dokümana dahil edilmemiştir. - Yukarıda verilen
+örneklerde iş parçacıkları veriyi (bu durumda *a*, *b*, *c* dizilerini)
+paylaşmaktadır. Yani bütün parçacıklar aynı dizilere erişmekte ve
 değiştirmektedir. Bu veri kapsamları bölümünde daha detaylı
 açıklanacaktır. - Genelde döngünün yenileme sayısı iş parçacığı
-sayısından fazla olacağından dolayı bir iş dağıtımı gerekli olacaktır.
+sayısından fazla olacağından, bir iş dağıtımı yöntemi gereklidir.
 Bu durumda varsayılan davranış derleyiciler arasında değişiklik
 göstermektedir ve iş dağıtımı bölümünde daha detaylı açıklanacaktır.
 
@@ -126,7 +129,7 @@ yer alan aynı kodu çalıştırmaktadır. Eğer bu iş parçacıklarının fark
 görevleri yerine getirmelerini istersek ``sections`` direktifini
 kullanabiliriz.
 
-Genel kullanım aşğıdaki örnekte gösterilmiştir.
+Bu direktif için genel kullanım aşğıdaki örnekte gösterilmiştir.
 
 .. code:: cpp
 
@@ -149,4 +152,5 @@ Genel kullanım aşğıdaki örnekte gösterilmiştir.
    }
 
 ``for`` direktifinde olduğu gibi ``parallel`` ve ``sections`` beraber
-kullanılabilir (``#pragma omp parallel sections``).
+kullanılabilir (``#pragma omp parallel sections``). Bu tür bir kullanımda her bir ``section`` 
+bir iş parçacığına atanır. 
